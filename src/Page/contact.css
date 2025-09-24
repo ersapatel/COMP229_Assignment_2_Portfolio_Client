@@ -1,0 +1,90 @@
+/*
+  Name: Swapnil Patel
+  Student Number: 301541762
+  Date: 2025-09-23
+  File: contacts.css
+*/
+
+.contact-section {
+    max-width: 1100px;
+    margin: 24px auto;
+    padding: 24px;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.04);
+  }
+  
+  .contact-title { margin: 0 0 16px; font-size: 1.75rem; color:#111827 }
+  
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .city {
+    color: #111827
+  }
+  
+  .contact-form { display: grid; gap: 14px; }
+  .field { display: grid; gap: 6px; }
+  .label { font-size: .95rem; color: #374151; }
+  .input {
+    width: 100%; font: inherit; padding: 10px 12px;
+    border-radius: 10px; border: 1px solid #e5e7eb;
+    background: #fafafa; color: #111827;
+    transition: border-color 150ms, box-shadow 150ms, background 150ms;
+  }
+  .input:focus {
+    outline: none; border-color: #111827;
+    box-shadow: 0 0 0 3px rgba(17,24,39,0.12); background: #fff;
+  }
+  .textarea { 
+    resize: none;
+    overflow: wrap; 
+  }
+  
+  /* Right column styles */
+  .contact-aside {
+    border: 1px solid #e5e7eb;
+    background: #f9fafb;
+    border-radius: 16px;
+    padding: 16px 18px;
+  }
+  
+  .aside-title {
+    margin: 0 0 10px;
+    font-size: 1.1rem;
+    color: #111827;
+  }
+  
+  .contact-list {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; gap: 10px;
+  }
+  
+  .contact-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+  }
+  
+  .contact-emoji { font-size: 1.05rem; line-height: 1; }
+  .contact-link { color: #111827; text-decoration: none; }
+  .contact-link:hover { text-decoration: underline; }
+  
+  .aside-note {
+    margin-top: 12px;
+    font-size: .925rem;
+    color: #4b5563;
+  }
+  
+  
+  .page { padding-inline: clamp(16px, 3vw, 32px); }
+  
+  * { box-sizing: border-box; }
+  

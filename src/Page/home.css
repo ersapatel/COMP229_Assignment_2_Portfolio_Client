@@ -1,0 +1,146 @@
+/*
+  Name: Swapnil Patel
+  Student Number: 301541762
+  Date: 2025-09-23
+  File: home.css
+*/
+
+.home-wrap {
+    position: relative;
+    max-width: 1100px;
+    margin: 24px auto;
+    padding: 24px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.04);
+    overflow: hidden;
+  }
+  
+  .bg-ornament {
+    position: absolute;
+    inset: -20%;
+    background:
+      radial-gradient(1200px 600px at 80% 0%, rgba(99,102,241,0.10), transparent 60%),
+      radial-gradient(800px 400px at 10% 100%, rgba(16,185,129,0.10), transparent 60%),
+      radial-gradient(1600px 800px at 50% 20%, rgba(14,165,233,0.08), transparent 60%);
+    pointer-events: none;
+    filter: blur(2px);
+  }
+  
+  /* HERO layout */
+  .home-hero {
+    display: grid;
+    gap: 24px;
+    align-items: center;
+    margin-bottom: 18px;
+  }
+  
+  .eyebrow {
+    margin: 0 0 6px;
+    font-weight: 600;
+    color: #6b7280;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    font-size: .85rem;
+  }
+  
+  .hero-title {
+    margin: 0;
+    font-size: 2.4rem;
+    color: #111827;
+    letter-spacing: .2px;
+  }
+  
+  .underline {
+    background: linear-gradient(120deg, #140a30 0%, #60a5fa 50%, #34d399 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .hero-lede {
+    margin: 10px 0 14px;
+    color: #374151;
+    line-height: 1.65;
+  }
+  
+  .hero-actions {
+    display: flex;
+    gap: 10px;
+    margin: 14px 0;
+    justify-content: center;
+  }
+  
+  /* QUICK LINKS */
+  .home-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 6px;
+  }
+  .link-card {
+    display: block;
+    padding: 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    text-decoration: none;
+    color: #111827;
+    background: #ffffffc7;
+    backdrop-filter: blur(4px);
+    transition: border-color 150ms, box-shadow 150ms, transform 80ms;
+  }
+  .link-card:hover {
+    border-color: #d1d5db;
+    box-shadow: 0 6px 18px rgba(0,0,0,.06);
+    transform: translateY(-1px);
+  }
+  .link-card h3 {
+    margin: 0 0 6px;
+    font-size: 1.05rem;
+  }
+  .link-card p {
+    margin: 0;
+    color: #4b5563;
+    line-height: 1.55;
+  }
+  
+  /* MISSION */
+  .home-mission {
+    margin-top: 20px;
+    padding: 18px;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    background: #f9fafb;
+  }
+  .home-mission h2 {
+    margin: 0 0 8px;
+    font-size: 1.3rem;
+    color: #111827;
+  }
+  .home-mission p {
+    margin: 0;
+    color: #374151;
+    line-height: 1.6;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid #111827;
+    background: #111827;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 150ms ease, transform 50ms ease;
+  }
+  .btn:hover { opacity: .92; }
+  .btn:active { transform: translateY(1px); }
+  .btn.btn-outline {
+    background: transparent;
+    color: #111827;
+    border: 1px solid #e5e7eb;
+  }
+  .btn.btn-outline:hover { background: #f3f4f6; }
+  
