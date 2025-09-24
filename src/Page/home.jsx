@@ -1,14 +1,33 @@
 /**
  * Name: Swapnil Patel
  * Student Id: 301541762
- * Date: 2025-09-23
+ * Date: 2025-09-24
  * File: home.jsx
  */
 
 import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
 import "./home.css";
 
 export default function Home() {
+  const [home, setHomeData] = useState([]);
+
+  useEffect(() => {
+    const fetchHomeData = async () => { try {
+       const response = await fetch("http://localhost:4242/api/home");
+  
+       const data = await response.json();
+  
+       setHomeData(data);
+      } catch (error) {
+       console.error("Error fetching home data:", error);
+      }
+   };
+   fetchHomeData();
+  }, []);
+
+  const links = home?.homelink ?? home?.homelinks ?? [];
+
   return (
     <section className="home-wrap">
       <div className="bg-ornament" aria-hidden />
@@ -16,9 +35,9 @@ export default function Home() {
       {/* HERO */}
       <div className="home-hero">
         <div className="hero-copy">
-          <p className="eyebrow">Hello there</p>
+          <p className="eyebrow">{home.greeting}</p>
           <h1 className="hero-title">
-            I’m <span className="underline">Swapnil</span>.
+            I’m <span className="underline">{home.name}</span>.
           </h1>
           <p className="hero-lede">
             I design and build web & mobile software that feels fast, clear, and dependable.
@@ -29,37 +48,27 @@ export default function Home() {
           </p>
 
           <div className="hero-actions">
-            <NavLink to="/projects" className="btn">Browse Projects</NavLink>
-            <NavLink to="/contact" className="btn btn-outline">Get in Touch</NavLink>
+            <NavLink to="/projects" className="btn">{home.browse}</NavLink>
+            <NavLink to="/contact" className="btn btn-outline">{home.inTouch}</NavLink>
           </div>
         </div>
       </div>
 
       {/* QUICK LINKS */}
       <div className="home-links">
-        <NavLink to="/about" className="link-card">
-          <h3>About</h3>
-          <p>Who I am, how I work, and what I value when building software.</p>
-        </NavLink>
-
-        <NavLink to="/services" className="link-card">
-          <h3>Services</h3>
-          <p>Web/mobile delivery, migrations, content systems, and project leadership.</p>
-        </NavLink>
-
-        <NavLink to="/projects" className="link-card">
-          <h3>Projects</h3>
-          <p>Snapshots of shipped features and the outcomes they achieved.</p>
-        </NavLink>
+        {links.map(({ to, item, details }, i) => (
+          <NavLink to={to} className="link-card" key={to || i}>
+            <h3>{item}</h3>
+            <p>{details}</p>
+          </NavLink>
+        ))}
       </div>
 
       {/* MISSION */}
       <section className="home-mission">
-        <h2>My Mission</h2>
+        <h2>{home.missionName}</h2>
         <p>
-          Build software that’s easy to use and easy to maintain. I focus on accessibility,
-          performance, and clear engineering practices so people get a smooth experience and teams
-          can evolve the product confidently.
+          {home.missionDetails}
         </p>
       </section>
     </section>

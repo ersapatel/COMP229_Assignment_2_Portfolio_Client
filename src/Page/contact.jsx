@@ -1,14 +1,31 @@
 /**
  * Name: Swapnil Patel
  * Student Id: 301541762
- * Date: 2025-09-23
+ * Date: 2025-09-24
  * File: contact.jsx
  */
 
 import './contact.css'
 import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
 
 export default function Contact() {
+    const [contact, setContactData] = useState([]);
+
+    useEffect(() => {
+      const fetchContactData = async () => {
+        try {
+          const response = await fetch("http://localhost:4242/api/contact");
+          const data = await response.json();
+          setContactData(data);
+        } catch (error) {
+          console.error("Error fetching contact data:", error);
+        }
+      };
+      fetchContactData();
+    }, []);
+    
+
     const navigate = useNavigate();
 
     function handleSubmit(e) {
@@ -18,7 +35,7 @@ export default function Contact() {
 
     return (
         <section className="contact-section">
-            <h1 className="contact-title">Contact Me</h1>
+            <h1 className="contact-title">{contact.title}</h1>
 
             <div className="contact-layout">
                 {/* LEFT: Form */}
@@ -82,15 +99,15 @@ export default function Contact() {
                 <ul className="contact-list">
                     <li className="contact-item">
                     <span className="contact-emoji" aria-hidden>📧</span>
-                    <a className="contact-link">spat1342@my.centennialcollege.ca</a>
+                    <a className="contact-link">{contact.email}</a>
                     </li>
                     <li className="contact-item">
                     <span className="contact-emoji" aria-hidden>📞</span>
-                    <a className="contact-link">+1 (416) 416-****</a>
+                    <a className="contact-link">{contact.phone}</a>
                     </li>
                     <li className="contact-item">
                     <span className="contact-emoji" aria-hidden>📍</span>
-                    <span className="city">Toronto, ON</span>
+                    <span className="city">{contact.city}</span>
                     </li>
                 </ul>
 
