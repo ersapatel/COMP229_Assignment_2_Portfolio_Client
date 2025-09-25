@@ -6,23 +6,23 @@
  */
 
 import React, { useEffect, useState } from 'react';
+import { api } from "../lib/api";
 import './services.css';
 
 export default function Services() {
   const [services, setServicesData] = useState([]);
 
   useEffect(() => {
-    const fetchServicesData = async () => {
+    (async () => {
       try {
-        const response = await fetch("http://localhost:4242/api/services");
-        const data = await response.json();
+        const data = await api("/api/services");
         setServicesData(data);
-      } catch (error) {
-        console.error("Error fetching services data:", error);
+      } catch (e) {
+        console.error("Error fetching services data:", e);
       }
-    };
-    fetchServicesData();
+    })();
   }, []);
+  
     return (
     <section className="services-section">
       <h1 className="services-title">{services.title}</h1>

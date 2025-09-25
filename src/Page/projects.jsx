@@ -6,6 +6,7 @@
  */
 
 import React, { useEffect, useState } from 'react';
+import { api } from "../lib/api";
 import "./projects.css";
 
 import projEcom from "../assets/ecommerce.png";
@@ -22,16 +23,14 @@ export default function Projects() {
   const [projects, setProjectsData] = useState([]);
 
   useEffect(() => {
-    const fetchProjectsData = async () => {
+    (async () => {
       try {
-        const response = await fetch("http://localhost:4242/api/projects");
-        const data = await response.json();
+        const data = await api("/api/projects");
         setProjectsData(data);
-      } catch (error) {
-        console.error("Error fetching projects data:", error);
+      } catch (e) {
+        console.error("Error fetching projects data:", e);
       }
-    };
-    fetchProjectsData();
+    })();
   }, []);
   
   return (

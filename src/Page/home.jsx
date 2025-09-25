@@ -7,23 +7,21 @@
 
 import { NavLink } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
+import { api } from "../lib/api";
 import "./home.css";
 
 export default function Home() {
   const [home, setHomeData] = useState([]);
 
   useEffect(() => {
-    const fetchHomeData = async () => { try {
-       const response = await fetch("http://localhost:4242/api/home");
-  
-       const data = await response.json();
-  
-       setHomeData(data);
-      } catch (error) {
-       console.error("Error fetching home data:", error);
+    (async () => {
+      try {
+        const data = await api("/api/home");
+        setHomeData(data);
+      } catch (e) {
+        console.error(e);
       }
-   };
-   fetchHomeData();
+    })();
   }, []);
 
   const links = home?.homelink ?? home?.homelinks ?? [];

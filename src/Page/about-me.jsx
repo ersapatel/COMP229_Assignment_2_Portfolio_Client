@@ -6,6 +6,7 @@
  */
 
 import React, { useEffect, useState } from 'react';
+import { api } from "../lib/api";
 import "./about-me.css";
 import me from "../assets/me.jpg";
 import resumePdf from "../assets/Resume.pdf";
@@ -14,17 +15,14 @@ export default function AboutMe() {
   const [about, setAboutData] = useState([]);
 
   useEffect(() => {
-    const fetchAboutData = async () => { try {
-       const response = await fetch("http://localhost:4242/api/about");
-
-       const data = await response.json();
-
-       setAboutData(data);
-      } catch (error) {
-       console.error("Error fetching about data:", error);
+    (async () => {
+      try {
+        const data = await api("/api/about");
+        setAboutData(data);
+      } catch (e) {
+        console.error("Error fetching about data:", e);
       }
-   };
-   fetchAboutData();
+    })();
   }, []);
 
   return (

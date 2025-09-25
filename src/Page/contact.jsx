@@ -8,22 +8,21 @@
 import './contact.css'
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
+import { api } from "../lib/api";
 
 export default function Contact() {
     const [contact, setContactData] = useState([]);
 
     useEffect(() => {
-      const fetchContactData = async () => {
-        try {
-          const response = await fetch("http://localhost:4242/api/contact");
-          const data = await response.json();
-          setContactData(data);
-        } catch (error) {
-          console.error("Error fetching contact data:", error);
-        }
-      };
-      fetchContactData();
-    }, []);
+        (async () => {
+          try {
+            const data = await api("/api/contact"); // same pattern
+            setContactData(data);
+          } catch (e) {
+            console.error(e);
+          }
+        })();
+      }, []);
     
 
     const navigate = useNavigate();
